@@ -1,16 +1,14 @@
 import socket
 
 client_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_server.connect(("localhost", 9999))
+client_server.connect(("192.168.100.55", 9999))
 
-while True:
-    def Send(message):
-        client_server.send(message.encode('utf-8'))
-        Bot_message = client_server.recv(1024).decode()
-        print(Bot_message)
+loop = True
+while loop:
+    client_server.send(input("message >").encode())
+    server_message = client_server.recv(1024).decode('utf-8')
+    print(server_message)
 
-
-    Send(input('message >'))
 
 
 
